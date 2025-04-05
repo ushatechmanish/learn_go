@@ -26,10 +26,11 @@ func main() {
 	//}
 
 	appUser := user{userFirstName, userLastName, userBirthDate, time.Now()}
-	outputUserDetails(appUser)
+	outputUserDetails(&appUser)
 }
 
-func outputUserDetails(user user) {
+func outputUserDetails(user *user) {
+	// *user is not required to dereference . shortcut is allowed by go to use user directly  only for structs
 	fmt.Println(user.firstName, user.lastName, user.birthDate)
 }
 
