@@ -12,7 +12,16 @@ type user struct {
 	createdAt time.Time
 }
 
-func (u *user) /*receiver argument*/ outputUserDetails() {
+func newUser(firstName, lastName, birthDate string) user {
+	return user{
+		firstName: firstName,
+		lastName:  lastName,
+		birthDate: birthDate,
+		createdAt: time.Time{},
+	}
+}
+
+func (u *user) outputUserDetails() {
 	// *user is not required to dereference . shortcut is allowed by go to use user directly  only for structs
 	fmt.Println(u.firstName, u.lastName, u.birthDate)
 }
@@ -34,7 +43,7 @@ func main() {
 	//	createdAt: time.Now(),
 	//}
 
-	appUser := user{userFirstName, userLastName, userBirthDate, time.Now()}
+	appUser := newUser(userFirstName, userLastName, userBirthDate)
 	appUser.outputUserDetails()
 	appUser.clearUserName()
 	appUser.outputUserDetails()
