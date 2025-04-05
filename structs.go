@@ -1,13 +1,36 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+type user struct {
+	firstName string
+	lastName  string
+	birthDate string
+	createdAt time.Time
+}
 
 func main() {
-	firstName := getUserData("Please enter your first name: ")
-	lastName := getUserData("Please enter your last name: ")
-	birthDate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
+	userFirstName := getUserData("Please enter your first name: ")
+	userLastName := getUserData("Please enter your last name: ")
+	userBirthDate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	fmt.Println(firstName, lastName, birthDate)
+	// This will help clarify the assignment of which value to which field
+	//appUser := user{
+	//	firstName: userFirstName,
+	//	lastName:  userLastName,
+	//	birthDate: userBirthDate,
+	//	createdAt: time.Now(),
+	//}
+
+	appUser := user{userFirstName, userLastName, userBirthDate, time.Now()}
+	outputUserDetails(appUser)
+}
+
+func outputUserDetails(user user) {
+	fmt.Println(user.firstName, user.lastName, user.birthDate)
 }
 
 func getUserData(promptText string) string {
