@@ -16,6 +16,11 @@ func main() {
 		fmt.Println(err)
 	}
 	note.OutputNote()
+	err = note.Save()
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("note saved to file")
 }
 
 func getUserInput(prompt string) string {
